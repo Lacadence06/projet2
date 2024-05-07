@@ -14,6 +14,6 @@ export class LoginComponent {
 constructor(private router:Router) {
 }
   LoginRedirect() {
-  this.router.navigate(["dashboard"])
+  this.router.navigate(["serv-dev"])
   }
 }
