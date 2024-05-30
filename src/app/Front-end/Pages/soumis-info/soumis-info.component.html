@@ -1,55 +1,35 @@
-<div class="container" >
-  <div class="iq-card" style="margin-top: 20px;border: red ">
-    <div class="iq-card-header d-flex justify-content-between">
-      <div class="iq-header-title">
-        <h4 class="" style="margin-left: 450px;font-family: 'Poppins', sans-serif">Demande de stage</h4>
-      </div>
-    </div>
-    <div class="iq-card-body">
-      <form class="needs-validation" novalidate="">
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom01">Nom</label>
-            <input type="text" class="form-control" id="validationCustom01" required="">
+<div class="card" style="margin-top: 50px">
+  <div class="card-header border-0">
+    <h3 class="card-title"><b>Liste des demandes</b></h3>
 
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom02">Prénom</label>
-            <input type="text" class="form-control" id="validationCustom02" required="">
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom02">Année-academique </label>
-            <input type="text" class="form-control" id="validationCustom02" required="">
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom04">Filière</label>
-            <select class="form-control" id="validationCustom04" required="">
-              <option selected="" disabled="" value="">Choose...</option>
-              <option>...</option>
-            </select>
-
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationCustom04">Niveau</label>
-            <select class="form-control" id="validationCustom04" required="">
-              <option selected="" disabled="" value="">Choose...</option>
-              <option>...</option>
-            </select>
-
-          </div>
-        </div>
-
-        <div class="col-md-12 mb-3" >
-          <label class="form-label">Joindre un CV</label>
-          <div class="form-control"  style="height: 3rem" >
-            <input type="file" style="height: 3.5rem">
-          </div>
-        </div>
-        <button class="btn btn-primary" type="submit" style="margin-left: 930px; width: 170px;height: 40px">Submit form</button>
-      </form>
-    </div>
   </div>
+  <div class="card-header border-0" style="position:absolute ;justify-content: flex-end;margin-left:970px">
+    <button type="button" class="btn btn-outline-success" (click)="main()" ><span style="width: 50px">+</span>Demande</button>
 
+
+  </div>
+  <div class="card-body table-responsive p-0">
+    <table class="table table-striped table-valign-middle">
+      <thead>
+      <tr style="background-color: black;color: white">
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Niveau</th>
+        <th>Infos</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Some Product</td>
+        <td>$13 USD</td>
+        <td>12,000 Sold</td>
+        <td> </td>
+        <td><div class="badge badge-success">En cours</div></td>
+
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
 </div>
-

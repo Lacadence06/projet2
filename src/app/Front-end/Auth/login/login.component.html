@@ -19,15 +19,24 @@
       <div class="form-content">
         <div class="form-items" >
           <p style="text-align: center; text-transform: capitalize;font-weight: bolder;margin-top: 20px">Connexion</p>
-          <form>
-            <input class="form-control" style="background: silver" type="text" name="username" placeholder="E-mail Address" required>
-            <input class="form-control" style="background: silver" type="password" name="password" placeholder="Password" required>
+          <form >
+            <mat-form-field style="width: 270px">
+              <mat-label>Nom d'utilisateur</mat-label>
+              <input matInput formControlName="username">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Mot de passe</mat-label>
+              <input matInput type="password" formControlName="password">
+            </mat-form-field>
             <div class="form-button">
-              <button id="submit" style="background:darkorange ;width: 100%" type="submit" class="ibtn" (click)="LoginRedirect()">Login</button>
+              <button id="submit" style="background:darkorange ;width: 100%" type="submit" class="ibtn"  (click)="loginredirect()">Login</button>
               <a routerLink="forgot_password" style="color: black;position: relative;left:170px;">Forget password?</a>
 
             </div>
+
           </form>
+
+
           <!--  <div class="other-links" id="bas">
               <div class="text">Or login with</div>
               <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
