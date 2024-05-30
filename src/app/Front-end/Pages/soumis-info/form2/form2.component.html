@@ -1,0 +1,65 @@
+
+<div class="container" style=" "  >
+  <div class="modal-header " style="" >
+    <h4 class="modal-title pull-left">{{ title }}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="iq-card" style="">
+    <div class="iq-card-body">
+      <form class="needs-validation" novalidate=""  [formGroup]="profileForm"  (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" formControlName="nom"   required=""  >
+
+          </div>
+          <div class="col-md-8 mb-3">
+            <label for="prenoms">Prénoms</label>
+            <input type="text" class="form-control" id="prenoms" formControlName="prenoms"   required=""  >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="annaca">Année-academique </label>
+            <input type="text" class="form-control" id="annaca" formControlName="annaca"   required=""  >
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="filiere">Filière</label>
+            <select class="form-control" id="filiere"  formControlName="filiere"   required="">
+              <option selected="" disabled="" value="">Choose...</option>
+              <option >Choose...</option>
+              <option >Choose...</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="niveau">Niveau</label>
+            <select class="form-control" id="niveau" formControlName="niveau"   required="">
+              <option selected="" disabled="" value="">Choose...</option>
+              <option >Momo</option>
+              <option >GRACE</option>
+
+            </select>
+
+
+          </div>
+          <div class="col-md-5 mb-3" >
+            <label class="form-label">Bulletin</label>
+            <div class="form-control"  style="height: 3rem" >
+              <input type="file" style="height: 3.5rem">
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" style="" (click)="onSubmit()">valider</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+
