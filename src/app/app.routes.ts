@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import {AuthLayoutsComponent} from "./Front-end/Layouts/auth-layouts/auth-layouts.component";
 import {LoginComponent} from "./Front-end/Auth/login/login.component";
 import {DashboardComponent} from "./Front-end/Pages/dashboard/dashboard.component";
 import {SoumisInfoComponent} from "./Front-end/Pages/soumis-info/soumis-info.component";
@@ -9,7 +8,7 @@ import {ListeDemandeComponent} from "./Front-end/Pages/liste-demande/liste-deman
 
 export const routes: Routes = [
   {path:'',
-    component:AuthLayoutsComponent,
+    component:LoginComponent,
   children:[
     {path:'',redirectTo:'login',pathMatch:"full"},
     {path:'login',component:LoginComponent}
