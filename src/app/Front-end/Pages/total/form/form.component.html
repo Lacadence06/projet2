@@ -1,56 +1,70 @@
-
-<div class="container" style=" "  >
-  <div class="modal-header " >
-    <h4 class="modal-title pull-left">{{ title }}</h4>
+<div class="container">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left" style="color: black; font-size: 30px; font-family: 'Poppins', sans-serif">{{ title }}</h4>
     <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
       <span aria-hidden="true" class="visually-hidden">&times;</span>
     </button>
   </div>
-  <div class="iq-card" style="">
+  <div class="iq-card">
     <div class="iq-card-body">
-      <form class="needs-validation" novalidate="">
+      <form class="needs-validation" novalidate>
         <div class="form-row">
           <div class="col-md-4 mb-3">
             <label for="validationCustom01">Nom</label>
-            <input type="text" class="form-control" id="validationCustom01" required=""  disabled>
-
+            <input type="text" class="form-control" id="validationCustom01" [(ngModel)]="demande.nom" name="nom" required disabled>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-4 mb-3">
             <label for="validationCustom02">Prénom</label>
-            <input type="text" class="form-control" id="validationCustom02" required=""  disabled>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.prenoms" name="prenom" required disabled>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Année académique</label>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.annee_academique" name="anneeAcademique" required disabled>
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-4 mb-3">
-            <label for="validationCustom02">Année-academique </label>
-            <input type="text" class="form-control" id="validationCustom02" required=""  disabled>
+            <label for="validationCustom02">Classe</label>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.classe" name="classe" required disabled>
           </div>
-
           <div class="col-md-4 mb-3">
             <label for="validationCustom04">Filière</label>
-
-            <input type="text" class="form-control" id="validationCustom02" required=""  disabled>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.filiere" name="filiere" required disabled>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="validationCustom04">Niveau</label>
-            <input type="text" class="form-control" id="validationCustom02" required=""  disabled>
-
-
+            <label for="validationCustom04">Thème</label>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.theme" name="theme" required disabled>
           </div>
-          <div class="col-md-5 mb-3" >
-            <label class="form-label">Bulletin</label>
-            <div class="form-control"  style="height: 3rem" >
-              <input type="file" style="height: 3.5rem">
-            </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Objectif spécifique</label>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.objspecifique" name="objectifSpecifique" required disabled>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Objectif général</label>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.objgeneral" name="objectifGeneral" required disabled>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Problématique</label>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.problematique" name="problematique" required disabled>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Environnement de Développement</label>
+            <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="demande.environdevelop" name="environnementDeveloppement" required disabled>
+          </div>
+          <div class="col-md-4 mb-3" style="margin-left: -10px">
+            <label for="validationCustom04">Professeur encadreur</label>
+            <select class="form-control" id="validationCustom04"  name="professeurEncadreur" required>
+              <option selected disabled value="">Choose...</option>
+              <option ></option>
+            </select>
           </div>
         </div>
-
-
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="bsModalRef.hide()">{{ closeBtnName }}</button>
+          <button class="btn btn-danger" type="submit">Refuser</button>
+          <button class="btn btn-success" type="submit">Valider</button>
+        </div>
       </form>
     </div>
   </div>
-
 </div>
-
-
-

@@ -7,6 +7,7 @@ import {MainLayoutsComponent} from "./Front-end/Layouts/main-layouts/main-layout
 import {EncadreurComponent} from "./Front-end/Pages/encadreur/encadreur.component";
 import {EtudiantComponent} from "./Front-end/Pages/etudiant/etudiant.component";
 import {TotalComponent} from "./Front-end/Pages/total/total.component";
+import {authGuard} from "./BAck-end/Guard/auth.guard";
 //import {AuthGuard} from "./BAck-end/auth.guard";
 
 

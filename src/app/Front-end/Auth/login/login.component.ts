@@ -1,11 +1,23 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import {Router, RouterLink, Routes} from "@angular/router";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-//import {AuthService} from "../../../BAck-end/services/auth.service";
+import {FormBuilder, FormGroup, ReactiveFormsModule,FormsModule, Validators} from "@angular/forms";
+//import {UserService} from "../../../BAck-end/services/auth.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatInput} from "@angular/material/input";
+import {UserService} from "../../../BAck-end/services/user.service";
+import {NgIf} from "@angular/common";
+import { ToastrService} from "ngx-toastr";
 
+
+export class Login {
+  username!: string;
+  password!:string;
+  constructor() {
+    this.username="";
+    this.password="";
+  }
+}
 
 @Component({
   selector: 'app-login',
@@ -16,46 +28,123 @@ import {MatInput} from "@angular/material/input";
     ReactiveFormsModule,
     MatFormFieldModule,
     HttpClientModule,
-    MatInput
+    MatInput,
+    NgIf,
+    FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
-  loginForm!: FormGroup ;
 
-  constructor(
-    private formBuilder: FormBuilder,
-   // private authService: AuthService,
-    private router: Router,
-private httpClient:HttpClient
-  ) { }
+  loginForm:any = FormGroup;
+  responseMessage:any;
+  show:Boolean = false;
+
+
+
+  constructor(private router:Router,
+              private UserService:UserService,
+              private formBuilder: FormBuilder,
+              private toast: ToastrService
+              ) {}
 
   ngOnInit(): void {
+    //   const data = localStorage.getItem('user');
+    // if(data!.length){
+    //   this.router.navigateByUrl('dashboard')
+    //
+    // }
+    
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+      username:['',Validators.required],
+      password: ['',Validators.required]
+    })
+    const data = localStorage.getItem('user');
+     if(data!.length){
+    this.router.navigateByUrl('dashboard')}
+
+
   }
 
-  /*onSubmit(): void {
-    if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      this.authService.login(username, password).subscribe(
-        response => {
-          console.log('Connexion réussie');
-          this.router.navigate(['/dashboard']).then(r => {}); // Redirigez vers la page d'accueil ou une autre page sécurisée
-        },
-        error => {
-          console.error('Erreur de connexion', error);
-        }
-      )
+  LoginRedirect() {
+    let formData = this.loginForm.value;
+    let data = {
+      username: formData.username,
+      password: formData.password
     }
-  }*/
-  loginredirect(){
-this.router.navigate(['dashboard'])
-  };
+    console.log('Données de connexion envoyées:', data); // Ajoutez ceci pour déboguer
+
+    this.UserService.Login(data).subscribe({
+      next: (res: any) => {
+        console.log('Réponse reçue:', res);
+        if (res.user) {
+          localStorage.setItem('user', JSON.stringify(res.user)); // Stockez les données de l'utilisateur
+          console.log('Données de l\'utilisateur stockées:', res.user); // Affichez les données dans la console pour vérifier
+        }
+       this.router.navigateByUrl('dashboard')
+      },
+      error: (error) => {
+        console.error('Mot de pas ou username incorrect:', error); // Ajoutez ceci pour voir l'erreur
+
+
+      }
+
+    });
+
+
+
+
+  }
+  logout() {
+    this.UserService.logout();
+  }
+
+
 }
+
+/**
+ * constructor(
+ *   private formBuilder: FormBuilder,
+ *   private router: Router,
+ *   private userService: UserService,
+ *   private toast: ToastrService,
+ * ){}
+ * ngOnInit(): void {
+ *   this.loginForm = this.formBuilder.group({
+ *     username: ['', Validators.required],
+ *     password: ['', Validators.required]
+ *   });}
+ *
+ *
+ *
+ *   LoginRedirect()
+ *   {
+ *     let formData = this.loginForm.value;
+ *     let data = {
+ *       username: formData.username,
+ *       password: formData.password
+ *     };
+ *
+ *     console.log('Données de connexion envoyées:', data); // Ajoutez ceci pour déboguer
+ *
+ *     this.userService.Login(data).subscribe({
+ *       next: (res: any) => {
+ *         console.log('Réponse reçue:', res);
+ *         if (res.status === 200) {
+ *           this.show = false;
+ *           this.router.navigate(['dashboard']);
+ *         } else {
+ *           this.show = true;
+ *         }
+ *       },
+ *       error: (error) => {
+ *         console.error('Mot de pas ou username incorrect:', error); // Ajoutez ceci pour voir l'erreur
+ *         this.show = true;
+ *       }
+ *     })
+ *   }
+ */

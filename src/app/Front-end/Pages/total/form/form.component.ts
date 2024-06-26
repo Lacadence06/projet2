@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BsModalRef} from "ngx-bootstrap/modal";
 import {NgForOf, NgIf} from "@angular/common";
+import {DemandeService} from "../../../../BAck-end/services/demande.service";
+import {FormsModule} from "@angular/forms";
 
 
 @Component({
@@ -8,19 +10,21 @@ import {NgForOf, NgIf} from "@angular/common";
   standalone: true,
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    FormsModule
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
-export class FormComponent  {
+export class FormComponent implements OnInit{
   title?: string;
   closeBtnName?: string;
   list: string[] = [];
+  demande : any
+  constructor(public bsModalRef: BsModalRef, private demandeService: DemandeService) {}
 
-  constructor(public bsModalRef: BsModalRef) {}
-
-  ngOnInit() {
-    this.list.push('PROFIT!!!');
+  ngOnInit(): void {
+    console.log(this.demande)
   }
+
 }

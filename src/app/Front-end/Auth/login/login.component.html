@@ -1,5 +1,4 @@
-
-<div class="form-body without-side" style="height: 300px" >
+<div class="form-body without-side" style="height: 300px">
   <div class="website-logo">
     <img src="assets/app-login/images/logotresor.png">
     <!--  <a href="index.html">
@@ -17,33 +16,19 @@
     </div>
     <div class="form-holder">
       <div class="form-content">
-        <div class="form-items" >
+        <div class="form-items">
           <p style="text-align: center; text-transform: capitalize;font-weight: bolder;margin-top: 20px">Connexion</p>
-          <form >
-            <mat-form-field style="width: 270px">
-              <mat-label>Nom d'utilisateur</mat-label>
-              <input matInput formControlName="username">
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Mot de passe</mat-label>
-              <input matInput type="password" formControlName="password">
-            </mat-form-field>
+          <form [formGroup]="loginForm" (ngSubmit)="LoginRedirect()">
+            <input class="form-control" style="background: silver" type="text" name="username"
+                   formControlName="username" placeholder="Enter your username" required>
+            <input class="form-control" style="background: silver" type="password" name="password"
+                   formControlName="password" placeholder="Enter your password" required>
             <div class="form-button">
-              <button id="submit" style="background:darkorange ;width: 100%" type="submit" class="ibtn"  (click)="loginredirect()">Login</button>
+              <button id="submit" style="background:darkorange ;width: 100%" type="submit" class="ibtn">Login</button>
               <a routerLink="forgot_password" style="color: black;position: relative;left:170px;">Forget password?</a>
 
             </div>
-
           </form>
-
-
-          <!--  <div class="other-links" id="bas">
-              <div class="text">Or login with</div>
-              <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
-            </div>
-            <div class="page-links">
-              <a href="register18.html">Register new account</a>
-            </div>-->
         </div>
       </div>
 
@@ -52,3 +37,70 @@
 </div>
 
 
+<!--
+
+<div class="form-body without-side" style="height: 300px" >
+  <div class="website-logo">
+    <img src="assets/app-login/images/logotresor.png">
+    &lt;!&ndash;  <a href="index.html">
+        <div class="logo">
+          <img class="logo-size" src="assets/images/logo-light.svg" alt="">
+        </div>
+      </a>&ndash;&gt;
+  </div>
+  <div class="row">
+    <div class="img-holder">
+      <div class="bg"></div>
+      <div class="info-holder">
+        <img src="assets/app-login/images/graphic3.svg" alt="">
+      </div>
+    </div>
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items" >
+          <p style="text-align: center; text-transform: capitalize;font-weight: bolder;margin-top: 20px">Connexion</p>
+          <form [formGroup]="loginForm" (ngSubmit)="LoginRedirect()">
+            <mat-form-field appearance="fill" style="width: 270px">
+              <mat-label>Nom d'utilisateur</mat-label>
+              <input matInput  formControlName="username"  required >
+            </mat-form-field>
+            <mat-form-field appearance="fill"  style="width: 270px">
+              <mat-label>Mot de passe</mat-label>
+              <input matInput  formControlName="password"  required>
+            </mat-form-field>
+            <div class="form-button">
+              <button id="submit" style="background:darkorange ;width: 100%" type="submit" class="ibtn" >Login</button>
+              <a routerLink="forgot_password" style="color: black;position: relative;left:170px;">Forget password?</a>
+
+
+            </div>
+            &lt;!&ndash;<div *ngIf="errorMessage">
+              <p style="color: red">{{ errorMessage }}</p>
+            </div>&ndash;&gt;
+
+           &lt;!&ndash; <div *ngIf="errorMessage">
+              <p style="color: red; text-align: center">{{ errorMessage }}</p>
+            </div>&ndash;&gt;
+
+          </form>
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+-->

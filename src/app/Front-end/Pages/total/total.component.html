@@ -6,24 +6,29 @@
     <table class="table table-striped table-valign-middle">
       <thead>
       <tr style="background-color: black;color: white">
+        <th>ID</th>
         <th>Nom</th>
-        <th>Prenom</th>
-        <th>Niveau</th>
-        <th>Infos</th>
+        <th>Prénom</th>
+        <th>Année académique</th>
+        <th>classe</th>
+        <th>Filiere</th>
+        <th>Action</th>
         <th>Status</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>Some Product</td>
-        <td>$13 USD</td>
-        <td>12,000 Sold</td>
-        <td> <button type="button" class="btn btn-outline-success" (click)="details()" >Details</button></td>
-        <td><div class="badge badge-success">En cours</div></td>
-
+      <tr  *ngFor="let demandes of demande" >
+        <td>{{ demandes.iddonnetheme}}</td>
+        <td>{{ demandes.nom}}</td>
+        <td>{{ demandes.prenoms}}</td>
+        <td>{{ demandes.annee_academique}}</td>
+        <td>{{ demandes.classe}}</td>
+        <td>{{ demandes.filiere}}</td>
+        <td><button type="button" class="btn btn-outline-success" (click)="Affidetails(demandes)">Détails</button></td>
+        <td><div class="badge badge-success">{{ demandes.statut }}</div></td>
       </tr>
-
       </tbody>
     </table>
   </div>
 </div>
+

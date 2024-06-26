@@ -1,0 +1,12 @@
+ion-icon .trash-outline{
+  font-size: 64px;
+  color: #1a8be0;
+}
+
+ion-icon .pencil-outline{
+  font-size: 40px;
+  color: red;!important;
+}
+ion-icon {
+  color: #1a8be0;
+}

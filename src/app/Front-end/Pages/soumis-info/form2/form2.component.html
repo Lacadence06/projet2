@@ -1,5 +1,4 @@
-
-<div class="container" style=" "  >
+<div class="container" cdk-overlay-container style=" "  >
   <div class="modal-header " style="" >
     <h4 class="modal-title pull-left">{{ title }}</h4>
     <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
@@ -8,58 +7,180 @@
   </div>
   <div class="iq-card" style="">
     <div class="iq-card-body">
-      <form class="needs-validation" novalidate=""  [formGroup]="profileForm"  (ngSubmit)="onSubmit()">
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="nom">Nom</label>
-            <input type="text" class="form-control" id="nom" formControlName="nom"   required=""  >
+      <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Contact</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="phone" formControlName="contact" required>
+            </mat-form-field>
+            <ng-template matStepLabel>Adresse</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Enter adress" formControlName="adress"  required>
+            </mat-form-field>
+            <ng-template matStepLabel>Année académique</ng-template>
+            <mat-form-field>
+              <input matInput  placeholder="Année academique" formControlName="annaca"  required>
+            </mat-form-field>
+              <ng-template matStepLabel>classe</ng-template>
+              <mat-form-field>
+                <input matInput  placeholder="classe" formControlName="cla"  required>
 
-          </div>
-          <div class="col-md-8 mb-3">
-            <label for="prenoms">Prénoms</label>
-            <input type="text" class="form-control" id="prenoms" formControlName="prenoms"   required=""  >
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="annaca">Année-academique </label>
-            <input type="text" class="form-control" id="annaca" formControlName="annaca"   required=""  >
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <label for="filiere">Filière</label>
-            <select class="form-control" id="filiere"  formControlName="filiere"   required="">
-              <option selected="" disabled="" value="">Choose...</option>
-              <option >Choose...</option>
-              <option >Choose...</option>
-            </select>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="niveau">Niveau</label>
-            <select class="form-control" id="niveau" formControlName="niveau"   required="">
-              <option selected="" disabled="" value="">Choose...</option>
-              <option >Momo</option>
-              <option >GRACE</option>
-
-            </select>
-
-
-          </div>
-          <div class="col-md-5 mb-3" >
-            <label class="form-label">Bulletin</label>
-            <div class="form-control"  style="height: 3rem" >
-              <input type="file" style="height: 3.5rem">
+              </mat-form-field>
+            <ng-template matStepLabel>Filière d'études</ng-template>
+            <mat-form-field>
+              <mat-select placeholder="filiere" formControlName="fil" required>
+                <mat-option *ngFor="let filiere of filieres" [value]="filiere">
+                  {{ filiere }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div>
             </div>
+              <button mat-button matStepperNext>Next</button>
+
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Thème</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Enter your thème" formControlName="thème" required>
+            </mat-form-field>
+            <ng-template matStepLabel>Problématique</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Enter problématique" formControlName="problé" required>
+            </mat-form-field>
+            <ng-template matStepLabel>Objectif spécifique</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Enter object specify " formControlName="objectspé" required>
+            </mat-form-field>
+            <ng-template matStepLabel>Objectif générale</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Enter object general" formControlName="objectgé" required>
+            </mat-form-field>
+            <ng-template matStepLabel>Resultat attendu</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Enter result" formControlName="result" required>
+            </mat-form-field>
+            <ng-template matStepLabel>Environnement developpement</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Enter environment of developement" formControlName="env" required>
+            </mat-form-field>
+            <ng-template matStepLabel>ID etudiant</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Id etudiant" formControlName="id_etud" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="onSubmit()">Envoyer</button>
           </div>
-          <button class="btn btn-primary" type="submit" style="" (click)="onSubmit()">valider</button>
-        </div>
-
-
-      </form>
+        </mat-step>
+      </mat-horizontal-stepper>
     </div>
   </div>
 
 </div>
+
+
+
+
+
+
+
+
+<!--<div class="container" style=" "  >-->
+<!--  <div class="modal-header " style="" >-->
+<!--    <h4 class="modal-title pull-left">{{ title }}</h4>-->
+<!--    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">-->
+<!--      <span aria-hidden="true" class="visually-hidden">&times;</span>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--  <div class="iq-card" style="">-->
+<!--    <div class="iq-card-body">-->
+<!--      <form class="needs-validation" novalidate=""  [formGroup]="profileForm"  (ngSubmit)="onSubmit()">-->
+<!--        <div class="form-row">-->
+<!--          <div class="col-md-4 mb-3">-->
+<!--            <label for="nom">Nom</label>-->
+<!--            <input type="text" class="form-control" id="nom" formControlName="nom"   required=""  >-->
+
+<!--          </div>-->
+<!--          <div class="col-md-8 mb-3">-->
+<!--            <label for="prenoms">Prénoms</label>-->
+<!--            <input type="text" class="form-control" id="prenoms" formControlName="prenoms"   required=""  >-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form-row">-->
+<!--          <div class="col-md-4 mb-3">-->
+<!--            <label for="annaca">Année-academique </label>-->
+<!--            <select class="form-control" id="annaca"  formControlName="annaca"   required="">-->
+<!--              <option selected="" disabled="" value="">Choose...</option>-->
+<!--              <option >2023-2024</option>-->
+<!--              <option >2022-2023</option>-->
+<!--            </select>-->
+<!--          </div>-->
+
+<!--          <div class="col-md-4 mb-3">-->
+<!--            <label for="filiere">Filière</label>-->
+<!--            <select class="form-control" id="filiere"  formControlName="filiere"   required="">-->
+<!--              <option selected="" disabled="" value="">Choose...</option>-->
+<!--              <option *ngFor="let filiere of filieres" [value]="filiere.nomfiliere">{{ filiere.nomfiliere}}</option>-->
+
+<!--            </select>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 mb-3">-->
+<!--            <label for="niveau">Classe</label>-->
+<!--            <input type="text" class="form-control" id="classe" formControlName="classe"   required=""  >-->
+<!--          </div>-->
+<!--          <div class="form-row">-->
+<!--            <div class="col-md-4 mb-3">-->
+<!--              <label for="annaca">Année-academique </label>-->
+<!--              <select class="form-control" id="annaca"  formControlName="annaca"   required="">-->
+<!--                <option selected="" disabled="" value="">Choose...</option>-->
+<!--                <option >2023-2024</option>-->
+<!--                <option >2022-2023</option>-->
+<!--              </select>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-4 mb-3">-->
+<!--              <label for="themesoutenance">Thème de soutenance</label>-->
+<!--              < <input type="text" class="form-control" id="themesoutenance" formControlName="themesoutenance"   required=""  >-->
+<!--            </div>-->
+<!--&lt;!&ndash;            <div class="col-md-5 mb-3" >&ndash;&gt;-->
+<!--&lt;!&ndash;              <label class="form-label">Bulletin</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="form-control"  style="height: 3rem" >&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="file" style="height: 3.5rem"   >&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            <div style="margin-left: 930px">-->
+<!--              <button class="btn btn-primary" type="submit" style="height: 50px;width: 90px" >valider</button>-->
+<!--            </div>-->
+
+<!--          </div>-->
+
+
+
+<!--        </div>-->
+
+
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+
+
+
 
 
 
